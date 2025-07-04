@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SureBetter - Reindirizzamento</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-color: #0a0f2c; /* blu notte */
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #00c8ff;
+      }
+
+      p {
+        margin-top: 0.8rem;
+        font-size: 1.2rem;
+        opacity: 0.85;
+      }
+
+      .hint {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #cccccc;
+        opacity: 0.6;
+      }
+
+      body:hover {
+        background-color: #0e1438;
+      }
+    </style>
+    <script>
+      function getParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      window.onload = function () {
+        const url1 = getParam("u") || getParam("url1");
+        const url2 = getParam("s") || getParam("url2");
+
+        if (!url1 || !url2) {
+          document.body.innerHTML = "<p>Errore: parametri mancanti.</p>";
+          return;
+        }
+
+        document.body.addEventListener("click", function () {
+          window.open(url1, "_blank");
+          window.location.href = url2;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>SureBetter</h1>
+    <p>Stai per essere reindirizzato verso due bookmaker...</p>
+    <div class="hint">(Clicca ovunque per continuare)</div>
+  </body>
+</html>
